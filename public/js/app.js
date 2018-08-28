@@ -20785,11 +20785,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 // Pass this if window is not defined yet
 } )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
 
+<<<<<<< HEAD
 // Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
 // arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
 // enough that all such attempts are guarded in a try block.
 "use strict";
+=======
+__webpack_require__(13);
+>>>>>>> fix_npm
 
 var arr = [];
 
@@ -43457,10 +43461,10 @@ if (false) {
 }
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \n@import '~bootstrap/scss/bootstrap';\n^\n      File to import not found or unreadable: ~bootstrap/scss/bootstrap.\n      in /Users/Iris/Dropbox/School/Ari/Projeto/CantinaDigital/resources/assets/sass/app.scss (line 9, column 1)\n    at runLoaders (/Users/Iris/Dropbox/School/Ari/Projeto/CantinaDigital/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /Users/Iris/Dropbox/School/Ari/Projeto/CantinaDigital/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/Iris/Dropbox/School/Ari/Projeto/CantinaDigital/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/Users/Iris/Dropbox/School/Ari/Projeto/CantinaDigital/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (/Users/Iris/Dropbox/School/Ari/Projeto/CantinaDigital/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.done [as callback] (/Users/Iris/Dropbox/School/Ari/Projeto/CantinaDigital/node_modules/neo-async/async.js:7974:18)\n    at options.error (/Users/Iris/Dropbox/School/Ari/Projeto/CantinaDigital/node_modules/node-sass/lib/index.js:294:32)");
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

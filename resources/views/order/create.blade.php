@@ -30,7 +30,6 @@
   <script>
   var list = document.getElementById('demo');
   var lastid = 0;
-
   function changeText2() {
 
     var content = $($.parseHTML('<div><input type="text" value="val" /></div>'));
@@ -53,8 +52,6 @@
     lastid+=1;
     list.appendChild(entry);
   }
-
-
   function removeName(itemid){
     var item = document.getElementById(itemid);
     list.removeChild(item);
