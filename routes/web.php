@@ -14,9 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Auth::routes();
-
-Route::resource('order','OrderController');
-
-Route::get('/home', 'HomeController@index')->name('home');

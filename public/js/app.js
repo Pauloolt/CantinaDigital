@@ -13894,7 +13894,6 @@ module.exports = __webpack_require__(43);
  */
 
 __webpack_require__(13);
-__webpack_require__(48);
 
 window.Vue = __webpack_require__(36);
 
@@ -47412,42 +47411,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */
-/***/ (function(module, exports) {
-
-var list = document.getElementById('demo');
-var lastid = 0;
-
-function changeText2() {
-    var firstname = document.getElementById('firstname').value;
-    document.getElementById('boldStuff2').innerHTML = firstname;
-    var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(firstname));
-    entry.setAttribute('id', 'item' + lastid);
-    var removeButton = document.createElement('button');
-    removeButton.appendChild(document.createTextNode("remove"));
-    removeButton.setAttribute('onClick', 'removeName("' + 'item' + lastid + '")');
-    entry.appendChild(removeButton);
-    lastid += 1;
-    list.appendChild(entry);
-}
-
-function removeName(itemid) {
-    var item = document.getElementById(itemid);
-    list.removeChild(item);
-}
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
 
 /***/ })
 /******/ ]);
