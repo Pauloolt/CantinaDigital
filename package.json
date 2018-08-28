@@ -18,5 +18,8 @@
         "popper.js": "^1.12",
         "vue": "^2.5.7"
     },
-    "dependencies": {}
+    "dependencies": {
+        "ajv": "^6.5.3",
+        "imagemin": "^5.3.1"
+    }
 }

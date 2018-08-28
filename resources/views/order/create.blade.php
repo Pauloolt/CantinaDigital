@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    {{-- <script src="{{asset('js/app.js')}}"></script> --}}
+    <script src="{{asset('js/app.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
@@ -33,17 +33,18 @@
 
   function changeText2() {
 
-    var content = `
-      <div class="">
-        <label for="">Option</label>
-        <input type="number" name="field['option']" value="">
-        <label for="">Quant</label>
-        <input type="number" name="field['quant']" value="">
-      </div>
-    `
-
+    var content = $($.parseHTML('<div><input type="text" value="val" /></div>'));
+    // (`
+    //   <div class="">
+    //     <label for="">Option</label>
+    //     <input type="number" name="field['option']" value="">
+    //     <label for="">Quant</label>
+    //     <input type="number" name="field['quant']" value="">
+    //   </div>
+    // `);
+    // content = $.parseHTML(content);
     var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(content));
+    entry.appendChild(document.createTextNode(content.find('div').html()));
     entry.setAttribute('id','item'+lastid);
     var removeButton = document.createElement('button');
     removeButton.appendChild(document.createTextNode("remove"));
