@@ -17,10 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
-Route::get('/show', 'ShowController@index')->name('show');
-Route::get('/kitchen', 'KitchenController@index')->name('kitchen');
-Route::put('/kitchen/{id}', 'KitchenController@update')->name('kitchen.update');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('order','OrderController');

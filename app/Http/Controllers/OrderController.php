@@ -14,7 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+      $orders = \App\Order::get();
+      return view('order.index')->with('orders', $orders);
     }
 
     /**
@@ -35,7 +36,32 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'order'  => 'required|string',
+        'name' => 'required|min:5|max:255|string',
+        'quantity' => 'required|numeric',
+        'number'  => 'required|numeric',
+      ]);
+
+      // $order = $request->input('order');
+      // $name = $request->input('name');
+      // $quantity = $request->input('quantity');
+      // $number = $request->input('number');
+
+      $new = new \App\Order;
+      $new->order = $request->input('order');
+      $new->name = $request->input('name');
+      $new->quantity = $request->input('quantity');
+      $new->number = $request->input('number');
+      $new->save();
+
+      $new = new \App\Stack;
+      $new->name = $request->input('name');
+      $new->number = $request->input('number');
+      $new->save();
+
+      return redirect('/order')->with('success', 'Order added');
+
     }
 
     /**
@@ -55,9 +81,14 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+      $order = \App\Order::find($id);
+
+      if (isset($order)) {
+        return view('order.edit')->with('order', $order);
+      }
+      return redirect() ->to (route('order.index'));
     }
 
     /**
@@ -67,9 +98,29 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'order'  => 'required|string',
+        'name' => 'required|min:5|max:255|string',
+        'quantity' => 'required|numeric',
+        'number'  => 'required|numeric',
+      ]);
+
+      $new = \App\Order::find($id);
+      $new->order = $request->input('order');
+      $new->name = $request->input('name');
+      $new->quantity = $request->input('quantity');
+      $new->number =$request->input('number');
+      $new->save();
+
+      $new = \App\Stack::find($id);
+      $new->name = $request->input('name');
+      $new->number = $request->input('number');
+      $new->save();
+
+      return redirect('/order')->with('success', 'Order updated');
+
     }
 
     /**
@@ -78,8 +129,15 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+      $order = \App\Order::find($id);
+      $order->delete();
+      $order = \App\Stack::find($id);
+      if(isset($order)){
+        $order->delete();
+      }
+
+      return redirect('/order')->with('success', 'Order deleted');
     }
 }

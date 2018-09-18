@@ -15,6 +15,9 @@ class CreateStacksTable extends Migration
     {
         Schema::create('stacks', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->integer('number');
+            $table->boolean('done')->default(false);
             $table->timestamps();
         });
     }
