@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('main');
+})->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home2');
 
 Route::get('/show', 'ShowController@index')->name('show');
 Route::get('/kitchen', 'KitchenController@index')->name('kitchen');

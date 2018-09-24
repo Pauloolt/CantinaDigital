@@ -1,36 +1,154 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <script src="{{asset('js/app.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+@extends('layouts.new')
+@section('test')
 
-    <title></title>
-  </head>
-  <body>
+  <style type="text/css">
 
-    <form action="{{route('order.update', [$order->id])}}" method="post">
-      {{csrf_field()}}
-      {{method_field('PUT')}}
-      <div class="form-group">
-        <label>Order</label>
-        <input type="text" name="order" class="form-control" value="{{$order->order}}">
-      </div>
-      <div class="form-group">
-        <label>Name<span class="fi-trash"></span></label>
-        <input type="text" name="name" class="form-control" value="{{$order->name}}">
-      </div>
-      <div class="form-group">
-        <label>Quantity<span class="fi-trash"></span></label>
-        <input type="text" name="quantity" class="form-control" value="{{$order->quantity}}">
-      </div>
-      <div class="form-group">
-        <label>Number<span class="fi-trash"></span></label>
-        <input type="text" name="number" class="form-control" value="{{$order->number}}">
-      </div>
-      <input type="submit"  value="submit" class="btn btn-primary">
-    </form>
-  </body>
+      #mudance{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center
+  }
 
-</html>
+      #larg_card{
+          width: 150%;
+
+      }
+
+      .logo{
+          text-decoration:none;
+      }
+
+  </style>
+
+<div class="wrapper">
+<div class="sidebar" data-color="azure" data-image="https://st2.depositphotos.com/3283017/8720/v/950/depositphotos_87207810-stock-illustration-vintage-fast-food-logo.jpg">
+
+<!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+  <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li>
+                <a href="{{route('order.create')}}">
+                    <i class="pe-7s-user"></i>
+                    <p>Fazer pedidos</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('order.index')}}">
+                    <i class="pe-7s-note2"></i>
+                    <p>Tabela de pedidos</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('home')}}">
+                    <i class="pe-7s-note2"></i>
+                    <p>Sair</p>
+                </a>
+            </li>
+
+        </ul>
+  </div>
+</div>
+
+<div class="main-panel">
+<nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+    </nav>
+
+
+    <div class="content">
+        @include('inc.messages')
+        <div id="mudance" class="container-fluid">
+            <div class="row">
+                <div  class="col-md-8">
+                    <div id="larg_card" class="card">
+                        <div class="header">
+                            <h4 class="title" style="text-align: center">Registros</h4>
+                        </div>
+                        <div class="content">
+                            <form action="{{route('order.update', [$order->id])}}" method="post">
+                              {{csrf_field()}}
+                              {{method_field('PUT')}}
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>Cliente</label>
+                                            <input type="text" class="form-control" name="name" placeholder="{{$order->name}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Senha</label>
+                                            <input type="number" class="form-control" name="number" placeholder="{{$order->number}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">    Quantidade</label>
+                                            <input type="number" class="form-control" name="quantity" placeholder="{{$order->quantity}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Descrição    </label>
+                                            <textarea rows="5" class="form-control" name="order" placeholder="{{$order->order}}"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-info btn-fill pull-center"  style="background-color: orange; border-color: pink;">Fazer pedido</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+             <!--   <div class="col-md-4">
+                    <div class="card card-user">
+                        <div class="image">
+                            <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                        </div>
+                        <div class="content">
+                            <div class="author">
+                                 <a href="#">
+                                <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+
+                                  <h4 class="title">Mike Andrew<br />
+                                     <small>michael24</small>
+                                  </h4>
+                                </a>
+                            </div>
+                            <p class="description text-center"> "Lamborghini Mercy <br>
+                                                Your chick she so thirsty <br>
+                                                I'm in that two seat Lambo"
+                            </p>
+                        </div>-->
+                        <hr>
+                       <!-- <div class="text-center">
+                            <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                            <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                            <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+
+                        </div>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+@endsection

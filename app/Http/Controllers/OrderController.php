@@ -40,7 +40,7 @@ class OrderController extends Controller
         'order'  => 'required|string',
         'name' => 'required|min:5|max:255|string',
         'quantity' => 'required|numeric',
-        'number'  => 'required|numeric',
+        'number'  => 'required|numeric|unique:orders',
       ]);
 
       // $order = $request->input('order');
@@ -60,7 +60,7 @@ class OrderController extends Controller
       $new->number = $request->input('number');
       $new->save();
 
-      return redirect('/order')->with('success', 'Order added');
+      return redirect('/order')->with('success', 'Pedido adicionado');
 
     }
 
@@ -104,7 +104,7 @@ class OrderController extends Controller
         'order'  => 'required|string',
         'name' => 'required|min:5|max:255|string',
         'quantity' => 'required|numeric',
-        'number'  => 'required|numeric',
+        'number'  => 'required|numeric|unique:orders',
       ]);
 
       $new = \App\Order::find($id);
@@ -119,7 +119,7 @@ class OrderController extends Controller
       $new->number = $request->input('number');
       $new->save();
 
-      return redirect('/order')->with('success', 'Order updated');
+      return redirect('/order')->with('success', 'Pedido atualizado');
 
     }
 
@@ -138,6 +138,6 @@ class OrderController extends Controller
         $order->delete();
       }
 
-      return redirect('/order')->with('success', 'Order deleted');
+      return redirect('/order')->with('success', 'Pedido Deletado');
     }
 }
